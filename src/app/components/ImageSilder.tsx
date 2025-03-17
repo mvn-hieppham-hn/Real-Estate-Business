@@ -30,7 +30,7 @@ export default function ImageSlider() {
           src={images[currentIndex]}
           alt="slider"
           className="w-full h-full object-cover"
-          initial={{ opacity: 0.8 }}
+          initial={{ opacity: 1 }}
           animate={{
             opacity: 1,
             x: 0.6,
@@ -41,7 +41,7 @@ export default function ImageSlider() {
               bounce: 0.4,
             },
           }}
-          exit={{ opacity: 0.8 }}
+          exit={{ opacity: 1 }}
         />
         <button
           className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
