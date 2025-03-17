@@ -3,6 +3,12 @@ import PostItem from './components/PostItem'
 
 import Banner from './components/Banner'
 import ImageSlider from './components/ImageSlider'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Trang chủ | Công ty ABC',
+  description: 'Trang web giới thiệu các dự án bất động sản mới nhất.',
+}
 
 export default function Home() {
   return (
