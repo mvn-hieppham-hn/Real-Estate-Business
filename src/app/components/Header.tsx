@@ -21,8 +21,11 @@ export default function Header() {
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false)
       }
     }
@@ -77,7 +80,7 @@ export default function Header() {
           </div>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-xs text-white font-semibold">
-          <Link href="#" className="hover:underline">
+          <Link href="/" className="hover:underline">
             TRANG CHỦ
           </Link>
 
