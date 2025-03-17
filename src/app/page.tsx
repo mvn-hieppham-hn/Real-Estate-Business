@@ -2,7 +2,7 @@ import { postListMockApi } from './api/mock-post'
 import PostItem from './components/PostItem'
 
 import Banner from './components/Banner'
-import ImageSlider from './components/ImageSilder'
+import ImageSlider from './components/ImageSlider'
 
 export default function Home() {
   return (
