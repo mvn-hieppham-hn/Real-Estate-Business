@@ -1,44 +1,35 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { PhoneCall, MessageCircle } from "lucide-react";
-import { Dialog } from "@headlessui/react";
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { PhoneCall } from 'lucide-react'
 
 export default function Footer() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalType, setModalType] = useState("");
-
-  const openModal = (type: string) => {
-    setModalType(type);
-    setIsOpen(true);
-  };
-
   const shakeAnimation = {
     rotate: [0, -10, 10, -3, 3, -1, 1, 0], // Rung lắc yếu dần
     transition: {
       duration: 1, // Tổng thời gian rung
       repeat: Infinity, // Lặp vô hạn (hoặc đổi thành số cố định nếu muốn dừng sau X lần)
       repeatDelay: 0.5, // Đợi 0.5s sau mỗi lần rung
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
-  };
+  }
 
   const getCurrentDate = () => {
-    const now = new Date();
-    const day = now.getDate().toString().padStart(2, "0");
-    const month = now.getMonth() + 1; // JavaScript months are 0-based
-    return { day, month };
-  };
-  const [currentDate, setCurrentDate] = useState(getCurrentDate());
+    const now = new Date()
+    const day = now.getDate().toString().padStart(2, '0')
+    const month = now.getMonth() + 1 // JavaScript months are 0-based
+    return { day, month }
+  }
+  const [currentDate, setCurrentDate] = useState(getCurrentDate())
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentDate(getCurrentDate());
-    }, 60000); // Cập nhật mỗi phút
+      setCurrentDate(getCurrentDate())
+    }, 60000) // Cập nhật mỗi phút
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <footer className="relative bg-sub-primary text-white">
@@ -55,7 +46,7 @@ export default function Footer() {
             </p>
             <p className="mt-1 text-sm">SDT / Zalo: 09.1111.3319</p>
             <p className="mt-1 text-sm">
-              Website:{" "}
+              Website:{' '}
               <a href="#" className="no-underline">
                 https://jadelaketaythanglong.com
               </a>
@@ -140,50 +131,33 @@ export default function Footer() {
         {/* 🔵 Zalo Icon */}
         <motion.div
           className="relative flex items-center justify-center w-14 h-14 bg-blue-500 rounded-full shadow-lg cursor-pointer"
-          onClick={() => openModal("Zalo")}
           animate={shakeAnimation}
         >
-          <MessageCircle size={28} className="text-white" />
-          <span className="absolute inset-0 rounded-full bg-blue-500 opacity-30 animate-ping"></span>
+          <a
+            href="https://id.zalo.me/account?continue=http%3A%2F%2Fzalo%2Eme%2F0911113319"
+            target="_blank"
+          >
+            <img src="/zalo.png" width={40} />
+            <span className="absolute inset-0 rounded-full bg-blue-500 opacity-30 animate-ping"></span>
+          </a>
         </motion.div>
 
         {/* 🔴 Phone Icon */}
         <motion.div
           className="relative flex items-center justify-center w-14 h-14 bg-red-500 rounded-full shadow-lg cursor-pointer"
-          onClick={() => openModal("Phone")}
           animate={shakeAnimation}
         >
-          <PhoneCall size={28} className="text-white" />
-          <span className="absolute inset-0 rounded-full bg-red-500 opacity-30 animate-ping"></span>
+          <a href="tel:0911113319">
+            <PhoneCall size={25} className="text-white" />
+            <span className="absolute inset-0 rounded-full bg-red-500 opacity-30 animate-ping"></span>
+          </a>
         </motion.div>
       </div>
-
-      {/* Modal */}
-      <Dialog
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-      >
-        <Dialog.Panel className="bg-white p-6 rounded shadow-lg max-w-md">
-          <Dialog.Title className="text-lg font-semibold">
-            {modalType} Info
-          </Dialog.Title>
-          <p className="mt-2 text-gray-600">
-            Chi tiết thông tin liên hệ {modalType}.
-          </p>
-          <button
-            className="mt-4 bg-gray-700 text-white p-2 rounded"
-            onClick={() => setIsOpen(false)}
-          >
-            Đóng
-          </button>
-        </Dialog.Panel>
-      </Dialog>
 
       {/* ⚫ Thanh bar Copyright */}
       <div className="bg-black text-gray-400 text-sm text-center py-4 mt-10">
         Copyright 2025 © Jade Lake Residence
       </div>
     </footer>
-  );
+  )
 }

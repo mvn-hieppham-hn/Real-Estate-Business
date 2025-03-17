@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -22,6 +22,14 @@ export default function ImageSlider() {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide()
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [currentIndex])
+
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-10">
       <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
@@ -30,18 +38,7 @@ export default function ImageSlider() {
           src={images[currentIndex]}
           alt="slider"
           className="w-full h-full object-cover"
-          initial={{ opacity: 1 }}
-          animate={{
-            opacity: 1,
-            x: 0.6,
-            transition: {
-              delay: 0.1,
-              type: 'spring',
-              visualDuration: 0.3,
-              bounce: 0.4,
-            },
-          }}
-          exit={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
         />
         <button
           className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
