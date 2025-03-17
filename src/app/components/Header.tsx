@@ -1,40 +1,40 @@
-"use client";
+'use client'
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { Mail, Clock, Phone, Menu, X, ChevronDown } from "lucide-react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { Mail, Clock, Phone, Menu, X, ChevronDown } from 'lucide-react'
+import Image from 'next/image'
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+      setScrolled(window.scrollY > 50)
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
+        setDropdownOpen(false)
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [dropdownRef]);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [dropdownRef])
 
   return (
     <header
       className={`fixed top-0 w-full transition-all duration-300 z-50 ${
-        scrolled ? "bg-sub-primary shadow-lg" : "bg-sub-primary"
+        scrolled ? 'bg-sub-primary shadow-lg' : 'bg-sub-primary'
       }`}
     >
       {/* Top Bar */}
@@ -68,10 +68,10 @@ export default function Header() {
           </button>
           <div className="hidden md:block w-[200px]">
             <Image
-              src="/phuoc-duyen.jpg"
+              src="/phuoc-duyen.png"
               alt="Logo"
-              width={36}
-              height={36}
+              width={45}
+              height={45}
               priority
             />
           </div>
@@ -175,5 +175,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  );
+  )
 }
