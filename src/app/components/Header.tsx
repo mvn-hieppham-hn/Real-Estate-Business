@@ -1,23 +1,26 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import { Mail, Clock, Phone, Menu, X, ChevronDown } from 'lucide-react'
-import Image from 'next/image'
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Mail, Clock, Phone, Menu, X, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+      setScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
@@ -26,18 +29,18 @@ export default function Header() {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setDropdownOpen(false)
+        setDropdownOpen(false);
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [dropdownRef])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownRef]);
 
   return (
     <header
       className={`fixed top-0 w-full transition-all duration-300 z-50 ${
-        scrolled ? 'bg-sub-primary shadow-lg' : 'bg-sub-primary'
+        scrolled ? "bg-sub-primary shadow-lg" : "bg-sub-primary"
       }`}
     >
       {/* Top Bar */}
@@ -112,7 +115,7 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="#" className="hover:underline">
+          <Link href="/news" className="hover:underline">
             TIN TỨC
           </Link>
         </nav>
@@ -165,7 +168,10 @@ export default function Header() {
               <Link
                 href="#"
                 className="px-4 py-2 rounded hover:bg-gray-200 no-underline transition"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  router.push(`/news`);
+                }}
               >
                 TIN TỨC
               </Link>
@@ -178,5 +184,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  )
+  );
 }
