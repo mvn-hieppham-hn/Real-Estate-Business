@@ -4,11 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Mail, Clock, Phone, Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +24,11 @@ export default function Header() {
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     }
@@ -68,16 +74,16 @@ export default function Header() {
           </button>
           <div className="hidden md:block w-[200px]">
             <Image
-              src="/phuoc-duyen.jpg"
+              src="/phuoc-duyen.png"
               alt="Logo"
-              width={36}
-              height={36}
+              width={45}
+              height={45}
               priority
             />
           </div>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-xs text-white font-semibold">
-          <Link href="#" className="hover:underline">
+          <Link href="/" className="hover:underline">
             TRANG CHỦ
           </Link>
 
@@ -109,7 +115,7 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="#" className="hover:underline">
+          <Link href="/news" className="hover:underline">
             TIN TỨC
           </Link>
         </nav>
@@ -162,7 +168,10 @@ export default function Header() {
               <Link
                 href="#"
                 className="px-4 py-2 rounded hover:bg-gray-200 no-underline transition"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  router.push(`/news`);
+                }}
               >
                 TIN TỨC
               </Link>
