@@ -98,14 +98,14 @@ export default function Header() {
             {dropdownOpen && (
               <div className="absolute top-full left-0 mt-2 bg-white text-black shadow-lg rounded-md p-2 w-60">
                 <Link
-                  href="#"
+                  href="/ground/1"
                   className="block px-4 py-2 hover:bg-gray-200"
                   onClick={() => setDropdownOpen(false)}
                 >
                   Thiết kế Biệt Thự Jade Lake Residence - Tây Thăng Long
                 </Link>
                 <Link
-                  href="#"
+                  href="/ground/2"
                   className="block px-4 py-2 hover:bg-gray-200"
                   onClick={() => setDropdownOpen(false)}
                 >
@@ -150,13 +150,13 @@ export default function Header() {
                 {dropdownOpen && (
                   <div className="mt-2 bg-white text-gray-700 shadow-lg rounded-md p-2">
                     <Link
-                      href="#"
+                      href="/ground/1"
                       className="block px-4 py-2 rounded hover:bg-gray-200 transition"
                     >
                       Thiết kế Biệt Thự Jade Lake Residence - Tây Thăng Long
                     </Link>
                     <Link
-                      href="#"
+                      href="/ground/2"
                       className="block px-4 py-2 rounded hover:bg-gray-200 transition"
                     >
                       Thiết kế Shophouse Jade Lake Residence 160m2 - Tây Thăng

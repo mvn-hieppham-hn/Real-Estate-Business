@@ -1,23 +1,33 @@
-import { postListMockApi } from './api/mock-post'
-import PostItem from './components/PostItem'
+import { postListMockApi } from "./api/mock-post";
+import PostItem from "./components/PostItem";
 
-import Banner from './components/Banner'
-import ImageSlider from './components/ImageSlider'
-import { Metadata } from 'next'
+import Banner from "./components/Banner";
+import ImageSlider from "./components/ImageSlider";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Trang chủ | Công ty ABC',
-  description: 'Trang web giới thiệu các dự án bất động sản mới nhất.',
-}
+  title: "Trang chủ | Công ty ABC",
+  description: "Trang web giới thiệu các dự án bất động sản mới nhất.",
+};
 
 export default function Home() {
+  const imageUrl =
+    "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/shophouse-duong-60m-jade-lake-tay-thang-long-1400x788.webp";
+  const motionTag = (
+    <div>
+      <h1 className="text-6xl font-semibold">JADE LAKE RESIDENCE</h1>
+      <p className="text-xl italic border-t-2 border-blue-500 mt-2 pt-2 font-parisienne">
+        Sống Tinh Hoa - Sống Thịnh Vượng
+      </p>
+    </div>
+  );
   return (
     <div>
-      <Banner />
+      <Banner imageUrl={imageUrl} motionTag={motionTag} />
       {postListMockApi.map((post, index) => {
-        return <PostItem key={index} post={post} />
+        return <PostItem key={index} post={post} />;
       })}
       <ImageSlider />
     </div>
-  )
+  );
 }
