@@ -1,10 +1,12 @@
-import Image from "next/image";
+// import Image from "next/image";
 import { Post } from "../api/type";
+import ShowImages from "./ShowImages";
 
 interface PostItemProps {
   post: Post;
 }
 const PostItem = ({ post }: PostItemProps) => {
+  console.log("post:", post);
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="relative flex items-center">
@@ -18,16 +20,17 @@ const PostItem = ({ post }: PostItemProps) => {
         {post.description.map((desc, index) => {
           return (
             <div key={index}>
-              <p className="text-gray-700 text-center mt-4">{desc.paragraph}</p>
+              <p className="text-gray-700 text-left mt-4">{desc.paragraph}</p>
               {desc.images && desc.images.length > 0 ? (
                 <div className="mt-6">
-                  <Image
-                    src={desc.images[0]}
+                  {/* <Image
+                    src={desc.images[0].imageUrl}
                     alt="Jade Lake Residence"
                     width={1200}
                     height={600}
                     className="rounded-lg shadow-md w-full object-cover"
-                  />
+                  /> */}
+                  {<ShowImages images={desc.images} />}
                 </div>
               ) : (
                 <div></div>
