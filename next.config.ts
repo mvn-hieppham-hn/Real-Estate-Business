@@ -1,16 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
-const nextConfig = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
-  },
+const nextConfig: NextConfig = {
   images: {
-    domains: ["jadelaketaythanglong.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '**',
+      },
+    ],
   },
-};
+}
 
-module.exports = nextConfig;
+export default nextConfig
