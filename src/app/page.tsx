@@ -1,9 +1,9 @@
-import { postListMockApi } from "./api/mock-post";
 import PostItem from "./components/PostItem";
 
 import Banner from "./components/Banner";
 import ImageSlider from "./components/ImageSlider";
 import { Metadata } from "next";
+import { overviewMockApi } from "./api/mock-overview";
 
 export const metadata: Metadata = {
   title: "Trang chủ | Công ty ABC",
@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div>
       <Banner imageUrl={imageUrl} motionTag={motionTag} />
-      {postListMockApi.map((post, index) => {
+      {overviewMockApi.map((post, index) => {
         return <PostItem key={index} post={post} />;
       })}
       <ImageSlider />

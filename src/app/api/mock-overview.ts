@@ -1,9 +1,9 @@
-import { Post } from "./type";
+import { Overview } from "./type";
 
-export const postListMockApi: Post[] = [
+export const overviewMockApi: Overview[] = [
   {
     id: 1,
-    title: "tổng quan dự án jade lake residence",
+    title: "Tổng quan dự án jade lake residence",
     description: [
       {
         paragraph:
@@ -105,14 +105,20 @@ export const postListMockApi: Post[] = [
         paragraph:
           "Kết nối cộng đồng tinh hoa với những giá trị sống xứng tầm, nơi các cư dân tìm thấy sự đồng điệu về tâm hồn bên những người hàng xóm văn minh, thành đạt. Đến với Jade Lake Residence nơi để cùng giao lưu, chia sẻ chung sở thích về nghệ thuật, phong các sống, hình thành nên một cộng đồng cư dân văn minh, hòa ái",
         images: [
-          "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/cong-vien-cay-xanh-jade-lake-residence-1400x788.webp",
+          {
+            imageUrl:
+              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/cong-vien-cay-xanh-jade-lake-residence-1400x788.webp",
+          },
         ],
       },
       {
         paragraph:
           "Sống tinh hoa để mỗi ngày đều là một hành trình tuyệt với và đầy cảm hứng giữa thiên nhiên diệu kì. Sống thịnh vượng để nằm bắt cơ hội mới và phát triển không ngừng, kiến tạo nên một cuộc sống đầy đủ và phồn vinh",
         images: [
-          "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/cong-du-an-jade-lake-residence-1400x788.webp",
+          {
+            imageUrl:
+              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/cong-du-an-jade-lake-residence-1400x788.webp",
+          },
         ],
       },
     ],

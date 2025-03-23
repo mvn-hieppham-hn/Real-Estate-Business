@@ -1,5 +1,5 @@
 import { mockNewsData } from "../api/mock-news";
-import ItemNews from "./ItemNews";
+import ItemNews from "../components/ItemNews";
 
 const News = () => {
   return (

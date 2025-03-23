@@ -7,7 +7,13 @@ export type Description = {
   images?: ImageType[];
 };
 
-export type Post = {
+export type Overview = {
+  id: number;
+  title: string;
+  description: Description[];
+};
+
+export type Project = {
   id: number;
   title: string;
   description: Description[];
@@ -29,3 +35,7 @@ export type NewsData = {
     content: string;
   }[];
 };
+
+export interface QueryParamsProps {
+  params: { id: string };
+}

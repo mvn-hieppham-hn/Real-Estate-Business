@@ -1,6 +1,6 @@
-import { Post } from "./type";
+import { Project } from "./type";
 
-export const groundListMockApi: Post[] = [
+export const projectListMockApi: Project[] = [
   {
     id: 1,
     title: "Giới thiệu biệt thự jade lake residence - Tây thăng long",
@@ -12,7 +12,7 @@ export const groundListMockApi: Post[] = [
         images: [
           {
             imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-biet-thu-jade-lake-tay-thang-long-2048x1165.webp",
+              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-biet-thu-jade-lake-tay-thang-long-1400x797.webp",
           },
         ],
       },
