@@ -6,7 +6,10 @@ export type Description = {
   paragraph?: string;
   images?: ImageType[];
 };
-
+export type Content = {
+  subtitle: string;
+  description: Description[];
+};
 export type Overview = {
   id: number;
   title: string;
@@ -17,7 +20,7 @@ export type Overview = {
 export type Project = {
   id: number;
   title: string;
-  description: Description[];
+  contents: Content[];
 };
 
 export type PostData = {
