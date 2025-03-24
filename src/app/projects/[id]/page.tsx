@@ -3,12 +3,12 @@ import { QueryParamsProps } from "@/app/api/type";
 import Banner from "@/app/components/Banner";
 import PostItem from "@/app/components/PostItem";
 
-const ItemProject = ({ params }: QueryParamsProps) => {
-  console.log("params.id:", params.id);
+const ItemProject = async ({ params }: QueryParamsProps) => {
+  const { id } = await params;
 
   return (
     <div>
-      <Banner imageUrl="https://jadelaketaythanglong.com/wp-content/uploads/2024/08/shophouse-duong-60m-jade-lake-tay-thang-long-1400x788.webp" />
+      <Banner imageUrl="/images/Banner-JLR-Pr-1.png" />
       {projectListMockApi.map((project, index) => {
         return <PostItem key={index} post={project} />;
       })}

@@ -11,8 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const imageUrl =
-    "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/shophouse-duong-60m-jade-lake-tay-thang-long-1400x788.webp";
+  const imageUrl = "/images/Banner-JLR-HomePage.png";
   const motionTag = (
     <div>
       <h1 className="text-6xl font-semibold">JADE LAKE RESIDENCE</h1>

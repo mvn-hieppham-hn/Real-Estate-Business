@@ -9,7 +9,6 @@ interface ShowImagesProps {
 }
 
 const ShowImages = ({ images }: ShowImagesProps) => {
-  console.log("Images:", images);
   return (
     <div
       className={`grid gap-4 ${
@@ -19,10 +18,7 @@ const ShowImages = ({ images }: ShowImagesProps) => {
       {images.map((img, index) => (
         <div key={index} className="relative group overflow-hidden">
           <Image
-            src={
-              img.imageUrl ||
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/shophouse-duong-60m-jade-lake-tay-thang-long-1400x788.webp"
-            }
+            src={img.imageUrl || "/images/Extension-1.png"}
             alt={img.caption || "Image"}
             width={500}
             height={300}

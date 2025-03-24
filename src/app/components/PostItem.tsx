@@ -1,4 +1,5 @@
 import { Overview } from "../api/type";
+import TableOverview from "../TableOverview";
 import Paragraphs from "./Paragraphs";
 import ShowImages from "./ShowImages";
 
@@ -25,7 +26,11 @@ const PostItem = ({ post }: PostItemProps) => {
               <Paragraphs paragraph={desc.paragraph} />
               {desc.images && desc.images.length > 0 ? (
                 <div className="mt-6">
-                  {<ShowImages images={desc.images} />}
+                  <ShowImages images={desc.images} />
+                  {/* <TableCustom /> */}
+                  <div className="flex flex-col md:flex-row gap-6 py-6">
+                    {post.type === "overview" && <TableOverview />}
+                  </div>
                 </div>
               ) : (
                 <div></div>

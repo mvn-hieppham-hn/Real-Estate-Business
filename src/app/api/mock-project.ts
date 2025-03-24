@@ -11,8 +11,7 @@ export const projectListMockApi: Project[] = [
         Vị trí đặc biệt của biệt thự Jade Lake Residence cũng là một lợi thế lớn. Dự án nằm ngay trên trục đường chính, dễ dàng kết nối với các tuyến đường lớn và các khu vực trung tâm của thành phố. Hệ thống hạ tầng giao thông hiện đại và đồng bộ, với các tuyến đường lớn như Vành Đai 3, vành đai 4, vành đai 3,5, Đại lộ Tây Thăng Long và tuyến đường sắt nội đô, giúp cư dân dễ dàng di chuyển và tiếp cận các tiện ích hiện đại như trung tâm thương mại, trường học quốc tế, bệnh viện và khu vui chơi giải trí.`,
         images: [
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-biet-thu-jade-lake-tay-thang-long-1400x797.webp",
+            imageUrl: "/images/Pr1-Intro.png",
           },
         ],
       },
@@ -31,37 +30,32 @@ export const projectListMockApi: Project[] = [
           "Số lượng hữu hạn với chỉ 08 căn biệt thự, diện thích mỗi căn từ 136m2 – 200m2 đều được xây dựng 6 tầng + 1 tum. Biệt thự Jade Lake Residence được hưởng từ hệ thống tiện ích nội khu đẳng cấp của dự án. Các tiện ích như công viên cây xanh, hồ điều hòa, khu thể thao, spa và phòng gym đều được thiết kế và trang bị hiện đại, mang lại cuộc sống tiện nghi và thoải mái cho cư dân. ",
         images: [
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/Thiet-ke-tang-1-biet-thu-jade-lade-residence-1590x2048.webp",
+            imageUrl: "/images/Pr1-Design-1.png",
+
             caption: "Mặt bằng tầng 1",
           },
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/Thiet-ke-tang-2-biet-thu-jade-lade-residence-768x989.webp",
+            imageUrl: "/images/Pr1-Design-2.png",
 
             caption: "Mặt bằng tầng 2",
           },
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/Thiet-ke-tang-3-biet-thu-jade-lade-residence-768x989.webp",
+            imageUrl: "/images/Pr1-Design-3.png",
 
             caption: "Mặt bằng tầng 3",
           },
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/Thiet-ke-tang-4-biet-thu-jade-lade-residence-768x989.webp",
+            imageUrl: "/images/Pr1-Design-4.png",
 
             caption: "Mặt bằng tầng 4",
           },
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/Thiet-ke-tang-5-biet-thu-jade-lade-residence-768x989.webp",
+            imageUrl: "/images/Pr1-Design-5.png",
 
             caption: "Mặt bằng tầng 5",
           },
           {
-            imageUrl:
-              "https://jadelaketaythanglong.com/wp-content/uploads/2024/08/Thiet-ke-tang-6-biet-thu-jade-lade-residence-768x989.webp",
+            imageUrl: "/images/Pr1-Design-6.png",
 
             caption: "Mặt bằng tầng 6",
           },

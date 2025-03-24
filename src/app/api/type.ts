@@ -10,6 +10,7 @@ export type Description = {
 export type Overview = {
   id: number;
   title: string;
+  type?: string;
   description: Description[];
 };
 
@@ -31,11 +32,12 @@ export type NewsData = {
   type: string;
   author: string;
   contents: {
-    image?: string;
-    content: string;
+    imageUrl?: string;
+    content?: string;
+    images?: ImageType[];
   }[];
 };
 
 export interface QueryParamsProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }

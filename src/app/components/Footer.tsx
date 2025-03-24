@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { PhoneCall } from 'lucide-react'
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { PhoneCall } from "lucide-react";
 
 export default function Footer() {
   const shakeAnimation = {
@@ -11,25 +11,25 @@ export default function Footer() {
       duration: 1, // Tổng thời gian rung
       repeat: Infinity, // Lặp vô hạn (hoặc đổi thành số cố định nếu muốn dừng sau X lần)
       repeatDelay: 0.5, // Đợi 0.5s sau mỗi lần rung
-      ease: 'easeInOut',
+      ease: "easeInOut",
     },
-  }
+  };
 
   const getCurrentDate = () => {
-    const now = new Date()
-    const day = now.getDate().toString().padStart(2, '0')
-    const month = now.getMonth() + 1 // JavaScript months are 0-based
-    return { day, month }
-  }
-  const [currentDate, setCurrentDate] = useState(getCurrentDate())
+    const now = new Date();
+    const day = now.getDate().toString().padStart(2, "0");
+    const month = now.getMonth() + 1; // JavaScript months are 0-based
+    return { day, month };
+  };
+  const [currentDate, setCurrentDate] = useState(getCurrentDate());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentDate(getCurrentDate())
-    }, 60000) // Cập nhật mỗi phút
+      setCurrentDate(getCurrentDate());
+    }, 60000); // Cập nhật mỗi phút
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <footer className="relative bg-sub-primary text-white">
@@ -46,7 +46,7 @@ export default function Footer() {
             </p>
             <p className="mt-1 text-sm">SDT / Zalo: 09.1111.3319</p>
             <p className="mt-1 text-sm">
-              Website:{' '}
+              Website:{" "}
               <a href="#" className="no-underline">
                 https://jadelaketaythanglong.com
               </a>
@@ -62,7 +62,7 @@ export default function Footer() {
             {/* Bài viết 1 */}
             <li className="flex items-center space-x-3 py-2 border-b border-white/30">
               <img
-                src="https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-3d-jade-lake-tay-thang-long-2.webp"
+                src="/images/Banner-JLR-HomePage.png"
                 alt="Post 1"
                 className="w-12 h-12 object-cover rounded"
               />
@@ -75,7 +75,7 @@ export default function Footer() {
             {/* Bài viết 2 */}
             <li className="flex items-center space-x-3 py-2 border-b border-white/30">
               <img
-                src="https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-3d-jade-lake-tay-thang-long-2.webp"
+                src="/images/Banner-JLR-Pr-1.png"
                 alt="Post 2"
                 className="w-12 h-12 object-cover rounded"
               />
@@ -159,5 +159,5 @@ export default function Footer() {
         Copyright 2025 © Jade Lake Residence
       </div>
     </footer>
-  )
+  );
 }

@@ -2,20 +2,15 @@ import React from "react";
 import { NewsData } from "../api/type";
 
 import { getNewsType } from "../constants/news.constants";
-import { extractDayMonth } from "../constants/new.helper";
 import Paragraphs from "./Paragraphs";
 import SubContact from "./SubContact";
+import ShowImages from "./ShowImages";
 
 interface DetailNewsProps {
   news: NewsData;
 }
 const DetailNews = ({ news }: DetailNewsProps) => {
-  const isHaveImage = news.contents && news.contents[0].image;
-
-  // Ví dụ sử dụng
-  const dateStr = "21 Tháng 2, 2025";
-  const result = extractDayMonth(dateStr);
-  console.log(result); // { day: 21, month: 2 }
+  const isHaveImage = news.contents && news.contents[0].imageUrl;
 
   return (
     <div className="bg-white px-4 pt-8  rounded-lg max-w-6xl mx-auto ">
@@ -30,19 +25,23 @@ const DetailNews = ({ news }: DetailNewsProps) => {
         Đã đăng trên {news.date} bởi Admin
       </p>
       <div className="relative">
-        {news.contents.map((content) => {
-          return isHaveImage ? (
-            <div>
-              <img
-                src={content.image}
-                alt={news.title}
-                className="rounded-lg w-full object-cover"
-              />
-              <Paragraphs paragraph={content.content} />
-            </div>
-          ) : (
-            <Paragraphs paragraph={content.content} />
-          );
+        {news.contents.map((content, index) => {
+          if (content.imageUrl) {
+            return (
+              <div key={index}>
+                <img
+                  src={content.imageUrl}
+                  alt={news.title}
+                  className="rounded-lg w-full object-cover"
+                />
+                <Paragraphs paragraph={content.content} />
+              </div>
+            );
+          } else if (content.images) {
+            return <ShowImages key={index} images={content.images} />;
+          } else {
+            return <Paragraphs key={index} paragraph={content.content} />;
+          }
         })}
       </div>
       <SubContact />

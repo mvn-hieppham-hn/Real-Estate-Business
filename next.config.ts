@@ -1,20 +1,16 @@
-const nextConfig = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
-  },
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "jadelaketaythanglong.com",
-        pathname: "/wp-content/uploads/**",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "**",
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

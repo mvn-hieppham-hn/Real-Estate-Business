@@ -9,7 +9,7 @@ interface ItemNewsProps {
   news: NewsData;
 }
 const ItemNews = ({ news }: ItemNewsProps) => {
-  const isHaveImage = news.contents && news.contents[0].image;
+  const isHaveImage = news.contents && news.contents[0].imageUrl;
 
   const dateStr = "21 Tháng 2, 2025";
   const result = extractDayMonth(dateStr);
@@ -34,7 +34,7 @@ const ItemNews = ({ news }: ItemNewsProps) => {
               <span className="block text-sm text-gray-500">{`Th${result?.month}`}</span>
             </div>
             <img
-              src={news.contents[0].image}
+              src={news.contents[0].imageUrl}
               alt={news.title}
               className="rounded-lg w-full object-cover"
             />
