@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const imageUrl = "/images/Banner-JLR-HomePage.png";
+  const imageUrl = "/images/Banner-JLR-HomePage.webp";
   const motionTag = (
     <div>
       <h1 className="text-6xl font-semibold">JADE LAKE RESIDENCE</h1>

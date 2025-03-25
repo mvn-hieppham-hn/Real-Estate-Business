@@ -46,7 +46,7 @@ const TableOverview = () => {
       {/* Hình ảnh */}
       <div className="md:w-1/2 flex justify-center items-center overflow-hidden">
         <Image
-          src="/images/Overview-2.png"
+          src="/images/Overview-2.webp"
           alt="Phối cảnh dự án Jade Lake"
           width={600}
           height={400}

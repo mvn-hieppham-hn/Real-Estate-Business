@@ -62,7 +62,7 @@ export default function Footer() {
             {/* Bài viết 1 */}
             <li className="flex items-center space-x-3 py-2 border-b border-white/30">
               <img
-                src="/images/Banner-JLR-HomePage.png"
+                src="/images/Banner-JLR-HomePage.webp"
                 alt="Post 1"
                 className="w-12 h-12 object-cover rounded"
               />
@@ -75,7 +75,7 @@ export default function Footer() {
             {/* Bài viết 2 */}
             <li className="flex items-center space-x-3 py-2 border-b border-white/30">
               <img
-                src="/images/Banner-JLR-Pr-1.png"
+                src="/images/Banner-JLR-Pr-1.webp"
                 alt="Post 2"
                 className="w-12 h-12 object-cover rounded"
               />

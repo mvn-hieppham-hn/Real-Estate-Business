@@ -18,7 +18,7 @@ const ShowImages = ({ images }: ShowImagesProps) => {
       {images.map((img, index) => (
         <div key={index} className="relative group overflow-hidden">
           <Image
-            src={img.imageUrl || "/images/Extension-1.png"}
+            src={img.imageUrl || "/images/Extension-1.webp"}
             alt={img.caption || "Image"}
             width={500}
             height={300}

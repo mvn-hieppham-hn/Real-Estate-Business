@@ -10,8 +10,6 @@ interface DetailNewsProps {
   news: NewsData;
 }
 const DetailNews = ({ news }: DetailNewsProps) => {
-  const isHaveImage = news.contents && news.contents[0].imageUrl;
-
   return (
     <div className="bg-white px-4 pt-8  rounded-lg max-w-6xl mx-auto ">
       <p className="text-gray-500 font-semibold uppercase text-sm mb-1 text-center">

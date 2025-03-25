@@ -11,7 +11,7 @@ const ItemProject = async ({ params }: QueryParamsProps) => {
   if (project)
     return (
       <div>
-        <Banner imageUrl="/images/Banner-JLR-Pr-1.png" />
+        <Banner imageUrl="/images/Banner-JLR-Pr-1.webp" />
         {project.contents.map((content, index) => {
           return <ProjectItem key={index} content={content} />;
         })}
