@@ -1,17 +1,16 @@
-import PostItem from "./components/PostItem";
+import PostItem from './components/PostItem'
 
-import Banner from "./components/Banner";
-import ImageSlider from "./components/ImageSlider";
-import { Metadata } from "next";
-import { overviewMockApi } from "./api/mock-overview";
+import Banner from './components/Banner'
+import { Metadata } from 'next'
+import { overviewMockApi } from './api/mock-overview'
 
 export const metadata: Metadata = {
-  title: "Trang chủ | Công ty ABC",
-  description: "Trang web giới thiệu các dự án bất động sản mới nhất.",
-};
+  title: 'Trang chủ | Công ty ABC',
+  description: 'Trang web giới thiệu các dự án bất động sản mới nhất.',
+}
 
 export default function Home() {
-  const imageUrl = "/images/Banner-JLR-HomePage.webp";
+  const imageUrl = '/images/Banner-JLR-HomePage.webp'
   const motionTag = (
     <div>
       <h1 className="text-6xl font-semibold">JADE LAKE RESIDENCE</h1>
@@ -19,14 +18,13 @@ export default function Home() {
         Sống Tinh Hoa - Sống Thịnh Vượng
       </p>
     </div>
-  );
+  )
   return (
     <div>
       <Banner imageUrl={imageUrl} motionTag={motionTag} />
       {overviewMockApi.map((post, index) => {
-        return <PostItem key={index} post={post} />;
+        return <PostItem key={index} post={post} />
       })}
-      <ImageSlider />
     </div>
-  );
+  )
 }

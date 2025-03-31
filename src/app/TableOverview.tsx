@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 const TableOverview = () => {
   return (
@@ -16,23 +16,23 @@ const TableOverview = () => {
           </thead>
           <tbody>
             {[
-              ["Tên thương mại", "JADE LAKE RESIDENCE"],
+              ['Tên thương mại', 'JADE LAKE RESIDENCE'],
               [
-                "Vị trí dự án",
-                "Lô đất số TT-07, đường Tây Thăng Long, phường Tây Tựu, quận Bắc Từ Liêm, TP Hà Nội",
+                'Vị trí dự án',
+                'Lô đất số TT-07, đường Tây Thăng Long, phường Tây Tựu, quận Bắc Từ Liêm, TP Hà Nội',
               ],
-              ["Chủ đầu tư", "Công Ty TNHH Sản Xuất – Thương Mại Vạn Thuận"],
-              ["Quy mô dự án", "1,582ha"],
+              ['Chủ đầu tư', 'Công Ty TNHH Sản Xuất – Thương Mại Vạn Thuận'],
+              ['Quy mô dự án', '1,582ha'],
               [
-                "Sản Phẩm",
-                "Liền kề: 82 căn\nBiệt thự: 08 căn\nThiết kế: 06 tầng nổi và 01 tầng hầm\nDiện tích: 102m2 – 160m2-200m2",
+                'Sản Phẩm',
+                'Liền kề: 82 căn\nBiệt thự: 08 căn\nThiết kế: 06 tầng nổi và 01 tầng hầm\nDiện tích: 102m2 – 160m2-200m2',
               ],
               [
-                "Hoàn thiện",
-                "Xây thô, hoàn thiện mặt ngoài (bao gồm hệ thống cửa nhôm và mái che)",
+                'Hoàn thiện',
+                'Xây thô, hoàn thiện mặt ngoài (bao gồm hệ thống cửa nhôm và mái che)',
               ],
-              ["Hình thức sở hữu", "Sổ đỏ lâu dài"],
-              ["Thời gian mở bán", "Quý IV/2024"],
+              ['Hình thức sở hữu', 'Sổ đỏ lâu dài'],
+              ['Thời gian mở bán', 'Quý IV/2024'],
             ].map(([title, content], index) => (
               <tr key={index} className="border-t border-gray-300">
                 <td className="px-4 py-2 font-medium bg-gray-100">{title}</td>
@@ -48,13 +48,13 @@ const TableOverview = () => {
         <Image
           src="/images/Overview-2.webp"
           alt="Phối cảnh dự án Jade Lake"
-          width={600}
+          width={1000}
           height={400}
           className="shadow-lg shadow-lg object-cover w-full h-full"
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TableOverview;
+export default TableOverview

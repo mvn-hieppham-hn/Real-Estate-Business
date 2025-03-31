@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { motion } from "framer-motion";
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 interface BannerProps {
-  imageUrl: string;
-  motionTag?: React.ReactNode;
+  imageUrl: string
+  motionTag?: React.ReactNode
 }
 const Banner = ({ imageUrl, motionTag }: BannerProps) => {
   return (
@@ -24,7 +24,7 @@ const Banner = ({ imageUrl, motionTag }: BannerProps) => {
             className="text-white text-center"
             initial={{ rotateY: 90, opacity: 0 }}
             animate={{ rotateY: 0, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
           >
             <div>
               <h1 className="text-6xl font-semibold">JADE LAKE RESIDENCE</h1>
@@ -38,7 +38,7 @@ const Banner = ({ imageUrl, motionTag }: BannerProps) => {
         <div></div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner

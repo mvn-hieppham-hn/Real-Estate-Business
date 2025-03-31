@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import Image from "next/image";
+import Image from 'next/image'
 
-import { ImageType } from "../api/type";
+import { ImageType } from '../api/type'
 
 interface ShowImagesProps {
-  images: ImageType[];
+  images: ImageType[]
 }
 
 const ShowImages = ({ images }: ShowImagesProps) => {
   return (
     <div
       className={`grid gap-4 ${
-        images.length < 3 ? "grid-cols-1" : "grid-cols-3"
+        images.length < 3 ? 'grid-cols-1' : 'grid-cols-3'
       }`}
     >
       {images.map((img, index) => (
         <div key={index} className="relative group overflow-hidden">
           <Image
-            src={img.imageUrl || "/images/Extension-1.webp"}
-            alt={img.caption || "Image"}
-            width={500}
+            src={img.imageUrl || '/images/Extension-1.webp'}
+            alt={img.caption || 'Image'}
+            width={1000}
             height={300}
             className="w-full h-auto rounded-lg shadow-md object-cover"
           />
@@ -39,7 +39,7 @@ const ShowImages = ({ images }: ShowImagesProps) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ShowImages;
+export default ShowImages

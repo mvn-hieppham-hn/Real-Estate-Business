@@ -1,35 +1,65 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { PhoneCall } from "lucide-react";
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { PhoneCall } from 'lucide-react'
+import { sendQuoteRequest } from '../action/mailer'
 
 export default function Footer() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    note: '',
+  })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+
   const shakeAnimation = {
     rotate: [0, -10, 10, -3, 3, -1, 1, 0], // Rung lắc yếu dần
     transition: {
       duration: 1, // Tổng thời gian rung
       repeat: Infinity, // Lặp vô hạn (hoặc đổi thành số cố định nếu muốn dừng sau X lần)
       repeatDelay: 0.5, // Đợi 0.5s sau mỗi lần rung
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
-  };
+  }
 
   const getCurrentDate = () => {
-    const now = new Date();
-    const day = now.getDate().toString().padStart(2, "0");
-    const month = now.getMonth() + 1; // JavaScript months are 0-based
-    return { day, month };
-  };
-  const [currentDate, setCurrentDate] = useState(getCurrentDate());
+    const now = new Date()
+    const day = now.getDate().toString().padStart(2, '0')
+    const month = now.getMonth() + 1 // JavaScript months are 0-based
+    return { day, month }
+  }
+  const [currentDate, setCurrentDate] = useState(getCurrentDate())
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentDate(getCurrentDate());
-    }, 60000); // Cập nhật mỗi phút
+      setCurrentDate(getCurrentDate())
+    }, 60000) // Cập nhật mỗi phút
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      await sendQuoteRequest(formData)
+      setSuccess(true)
+      setFormData({ name: '', phone: '', email: '', note: '' })
+    } catch {
+      alert('Gửi không thành công. Vui lòng thử lại!')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <footer className="relative bg-sub-primary text-white">
@@ -46,7 +76,7 @@ export default function Footer() {
             </p>
             <p className="mt-1 text-sm">SDT / Zalo: 09.1111.3319</p>
             <p className="mt-1 text-sm">
-              Website:{" "}
+              Website:{' '}
               <a href="#" className="no-underline">
                 https://jadelaketaythanglong.com
               </a>
@@ -96,34 +126,48 @@ export default function Footer() {
         </div>
 
         {/* Form đăng ký */}
-        <div>
-          <h3 className="text-lg font-semibold">ĐĂNG KÝ BÁO GIÁ</h3>
-          <div className="w-10 h-1 bg-[#ffffff4d] mt-1 mb-3"></div>
-          <form className="mt-2 grid grid-cols-2 gap-2">
-            <input
-              type="text"
-              placeholder="Họ và tên *"
-              className="p-2 bg-white text-black rounded"
-            />
-            <input
-              type="text"
-              placeholder="Số điện thoại *"
-              className="p-2 bg-white text-black rounded"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="p-2 bg-white text-black rounded col-span-2"
-            />
-            <textarea
-              placeholder="Ghi chú..."
-              className="p-2 bg-white text-black rounded col-span-2"
-            ></textarea>
-            <button className="bg-blue-600 hover:bg-blue-700 p-2 rounded col-span-2 text-center">
-              TẢI XUỐNG
-            </button>
-          </form>
-        </div>
+        <form className="mt-2 grid grid-cols-2 gap-2" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Họ và tên *"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="p-2 bg-white text-black rounded"
+          />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Số điện thoại *"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className="p-2 bg-white text-black rounded"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="p-2 bg-white text-black rounded col-span-2"
+          />
+          <textarea
+            name="note"
+            placeholder="Ghi chú..."
+            value={formData.note}
+            onChange={handleChange}
+            className="p-2 bg-white text-black rounded col-span-2"
+          ></textarea>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-600 hover:bg-blue-700 p-2 rounded col-span-2 text-center"
+          >
+            {loading ? 'Đang gửi...' : success ? 'Đã gửi ✅' : 'TẢI XUỐNG'}
+          </button>
+        </form>
       </div>
 
       {/* 🔥 Icon Zalo & Phone cố định */}
@@ -159,5 +203,5 @@ export default function Footer() {
         Copyright 2025 © Jade Lake Residence
       </div>
     </footer>
-  );
+  )
 }
