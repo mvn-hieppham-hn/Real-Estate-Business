@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { Mail, Clock, Phone, Menu, X, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import { projectListMockApi } from '../api/mock-project'
+import { slugify } from '../helpers/helpers'
 
 const headerTitle = {
-  THEME: 'DỰ ÁN JADE LAKE RESIDENCE - 0386660303',
+  THEME: 'CTY TNHH BĐS NHÀ ĐẤT PHƯỚC DUYÊN - 0386660303',
   HOME: 'TRANG CHỦ',
   PROJECT: 'DỰ ÁN',
   NEWS: 'TIN TỨC',
@@ -45,7 +46,7 @@ export default function Header() {
   const optionProjectList = useMemo(() => {
     return projectListMockApi.map((project) => {
       return {
-        url: `/projects/${project.id}`,
+        url: `/projects/${slugify(project.title)}`,
         title: project.title,
       }
     })

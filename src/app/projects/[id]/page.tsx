@@ -3,6 +3,7 @@ import { QueryParamsProps } from '@/app/api/type'
 import Banner from '@/app/components/Banner'
 import ProjectItem from './ProjectItem'
 import { Metadata } from 'next'
+import { slugify } from '@/app/helpers/helpers'
 
 export async function generateMetadata({
   params,
@@ -31,7 +32,7 @@ export async function generateMetadata({
 const ItemProject = async ({ params }: QueryParamsProps) => {
   const { id } = await params
   const project = projectListMockApi.find(
-    (project) => String(project.id) === id
+    (project) => slugify(project?.title) == id
   )
 
   if (project)

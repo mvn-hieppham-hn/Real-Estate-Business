@@ -3,7 +3,7 @@ import { mockNewsData } from '../api/mock-news'
 import ItemNews from '../components/ItemNews'
 
 export const metadata: Metadata = {
-  title: 'Tin tức | Phước Duyên',
+  title: 'Tin tức | CTY TNHH BĐS NHÀ ĐẤT PHƯỚC DUYÊN',
   description: 'Danh sách tin tin bất động sản Phước Duyên',
 }
 
