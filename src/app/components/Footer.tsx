@@ -67,26 +67,26 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto py-10 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Thông tin dự án */}
         <div>
-          <h3 className="text-lg font-semibold">DỰ ÁN JADE LAKE RESIDENCE</h3>
+          <h2 className="text-lg font-semibold">DỰ ÁN JADE LAKE RESIDENCE</h2>
           <div className="w-10 h-1 bg-[#ffffff4d] mt-1 mb-3"></div>
           <div className="flex flex-col justify-between gap-4">
             <p className="mt-2 text-sm">
               Địa Chỉ : Lô đất số TT-07, đường Tây Thăng Long, phường Tây Tựu,
               quận Bắc Từ Liêm, Hà Nội
             </p>
-            <p className="mt-1 text-sm">SDT / Zalo: 09.1111.3319</p>
-            <p className="mt-1 text-sm">
+            <p className="mt-1 text-sm">SDT / Zalo: 0386660303</p>
+            {/* <p className="mt-1 text-sm">
               Website:{' '}
               <a href="#" className="no-underline">
                 https://jadelaketaythanglong.com
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
 
         {/* Bài viết mới */}
         <div>
-          <h3 className="text-lg font-semibold">BÀI VIẾT MỚI</h3>
+          <h2 className="text-lg font-semibold">BÀI VIẾT MỚI</h2>
           <div className="w-10 h-1 bg-[#ffffff4d] mt-1 mb-3"></div>
           <ul className="mt-2 text-sm">
             {/* Bài viết 1 */}
@@ -161,6 +161,7 @@ export default function Footer() {
             className="p-2 bg-white text-black rounded col-span-2"
           ></textarea>
           <button
+            aria-label="Tư vấn"
             type="submit"
             disabled={loading}
             className="bg-blue-600 hover:bg-blue-700 p-2 rounded col-span-2 text-center"
@@ -178,10 +179,11 @@ export default function Footer() {
           animate={shakeAnimation}
         >
           <a
-            href="https://id.zalo.me/account?continue=http%3A%2F%2Fzalo%2Eme%2F0911113319"
+            href="https://id.zalo.me/account?continue=http%3A%2F%2Fzalo%2Eme%2F0978167564"
             target="_blank"
+            aria-label="Zalo me"
           >
-            <img src="/zalo.png" width={40} />
+            <img src="/zalo.png" width={40} alt="zalo" />
             <span className="absolute inset-0 rounded-full bg-blue-500 opacity-30 animate-ping"></span>
           </a>
         </motion.div>
@@ -191,7 +193,7 @@ export default function Footer() {
           className="relative flex items-center justify-center w-14 h-14 bg-red-500 rounded-full shadow-lg cursor-pointer"
           animate={shakeAnimation}
         >
-          <a href="tel:0911113319">
+          <a href="tel:0386660303" aria-label="Phone number">
             <PhoneCall size={25} className="text-white" />
             <span className="absolute inset-0 rounded-full bg-red-500 opacity-30 animate-ping"></span>
           </a>
@@ -200,7 +202,7 @@ export default function Footer() {
 
       {/* ⚫ Thanh bar Copyright */}
       <div className="bg-black text-gray-400 text-sm text-center py-4 mt-10">
-        Copyright 2025 © Jade Lake Residence
+        Copyright 2025 © Phuoc Duyen
       </div>
     </footer>
   )

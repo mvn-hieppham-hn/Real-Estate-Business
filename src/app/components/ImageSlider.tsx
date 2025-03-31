@@ -43,12 +43,14 @@ export default function ImageSlider() {
         <button
           className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
           onClick={prevSlide}
+          aria-label="previous"
         >
           <ChevronLeft size={30} />
         </button>
         <button
           className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
           onClick={nextSlide}
+          aria-label="next"
         >
           <ChevronRight size={30} />
         </button>

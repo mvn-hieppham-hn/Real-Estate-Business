@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { overviewMockApi } from './api/mock-overview'
 
 export const metadata: Metadata = {
-  title: 'Trang chủ | Công ty ABC',
+  title: 'Trang chủ | Phước Duyên',
   description: 'Trang web giới thiệu các dự án bất động sản mới nhất.',
 }
 

@@ -15,6 +15,7 @@ const Banner = ({ imageUrl, motionTag }: BannerProps) => {
         alt="Jade Lake Residence"
         layout="fill"
         objectFit="cover"
+        loading="eager"
       />
       {/* Nền đen giữ nguyên */}
       {motionTag ? (
