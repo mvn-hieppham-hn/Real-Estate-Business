@@ -1,10 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Mail, Clock, Phone, Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { projectListMockApi } from "../api/mock-project";
+
+const headerTitle = {
+  THEME: "DỰ ÁN JADE LAKE RESIDENCE - 09.1111.3319",
+  HOME: "TRANG CHỦ",
+  PROJECT: "DỰ ÁN",
+  NEWS: "TIN TỨC",
+};
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,6 +45,15 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [dropdownRef]);
 
+  const optionProjectList = useMemo(() => {
+    return projectListMockApi.map((project) => {
+      return {
+        url: `/projects/${project.id}`,
+        title: project.title,
+      };
+    });
+  }, []);
+
   return (
     <header
       className={`fixed top-0 w-full transition-all duration-300 z-50 ${
@@ -47,7 +64,7 @@ export default function Header() {
       {!scrolled && (
         <div className="bg-primary ">
           <div className="text-white text-xs font-semibold py-2 px-4 flex justify-between items-center max-w-6xl mx-auto">
-            <span>DỰ ÁN JADE LAKE RESIDENCE - 09.1111.3319</span>
+            <span>{headerTitle.THEME}</span>
             <div className="hidden md:flex items-center gap-4 font-thin">
               <div className="flex items-center gap-1 pr-4 border-r border-gray-300">
                 <Mail size={14} /> <span>LIÊN HỆ</span>
@@ -84,7 +101,7 @@ export default function Header() {
         </div>
         <nav className="hidden md:flex items-center gap-6 text-xs text-white font-semibold">
           <Link href="/" className="hover:underline">
-            TRANG CHỦ
+            {headerTitle.HOME}
           </Link>
 
           <div className="relative" ref={dropdownRef}>
@@ -92,31 +109,29 @@ export default function Header() {
               className="flex items-center gap-1 hover:underline "
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              MẶT BẰNG <ChevronDown size={16} />
+              {headerTitle.PROJECT}
+              <ChevronDown size={16} />
             </button>
-
             {dropdownOpen && (
               <div className="absolute top-full left-0 mt-2 bg-white text-black shadow-lg rounded-md p-2 w-60">
-                <Link
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-200"
-                  onClick={() => setDropdownOpen(false)}
-                >
-                  Thiết kế Biệt Thự Jade Lake Residence - Tây Thăng Long
-                </Link>
-                <Link
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-200"
-                  onClick={() => setDropdownOpen(false)}
-                >
-                  Thiết kế Shophouse Jade Lake Residence 160m2 - Tây Thăng Long
-                </Link>
+                {optionProjectList.map((project, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      href={project.url}
+                      className="block px-4 py-2 hover:bg-gray-200"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      {project.title}
+                    </Link>
+                  );
+                })}
               </div>
             )}
           </div>
 
           <Link href="/news" className="hover:underline">
-            TIN TỨC
+            {headerTitle.NEWS}
           </Link>
         </nav>
       </div>
@@ -137,31 +152,29 @@ export default function Header() {
                 className="px-4 py-2 rounded hover:bg-gray-200 no-underline transition"
                 onClick={() => setMenuOpen(false)}
               >
-                TRANG CHỦ
+                {headerTitle.HOME}
               </Link>
               <div>
                 <button
                   className="flex items-center justify-between w-full px-4 py-2 rounded hover:bg-gray-200 transition"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                 >
-                  MẶT BẰNG <ChevronDown size={16} />
+                  {headerTitle.PROJECT} <ChevronDown size={16} />
                 </button>
 
                 {dropdownOpen && (
                   <div className="mt-2 bg-white text-gray-700 shadow-lg rounded-md p-2">
-                    <Link
-                      href="#"
-                      className="block px-4 py-2 rounded hover:bg-gray-200 transition"
-                    >
-                      Thiết kế Biệt Thự Jade Lake Residence - Tây Thăng Long
-                    </Link>
-                    <Link
-                      href="#"
-                      className="block px-4 py-2 rounded hover:bg-gray-200 transition"
-                    >
-                      Thiết kế Shophouse Jade Lake Residence 160m2 - Tây Thăng
-                      Long
-                    </Link>
+                    {optionProjectList.map((project, index) => {
+                      return (
+                        <Link
+                          key={index}
+                          href={project.url}
+                          className="block px-4 py-2 rounded hover:bg-gray-200 transition"
+                        >
+                          {project.title}
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -173,7 +186,7 @@ export default function Header() {
                   router.push(`/news`);
                 }}
               >
-                TIN TỨC
+                {headerTitle.NEWS}
               </Link>
             </nav>
           </div>

@@ -3,8 +3,18 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { PhoneCall } from 'lucide-react'
+import { sendQuoteRequest } from '../action/mailer'
 
 export default function Footer() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    note: '',
+  })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+
   const shakeAnimation = {
     rotate: [0, -10, 10, -3, 3, -1, 1, 0], // Rung lắc yếu dần
     transition: {
@@ -30,6 +40,26 @@ export default function Footer() {
 
     return () => clearInterval(interval)
   }, [])
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      await sendQuoteRequest(formData)
+      setSuccess(true)
+      setFormData({ name: '', phone: '', email: '', note: '' })
+    } catch {
+      alert('Gửi không thành công. Vui lòng thử lại!')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <footer className="relative bg-sub-primary text-white">
@@ -62,7 +92,7 @@ export default function Footer() {
             {/* Bài viết 1 */}
             <li className="flex items-center space-x-3 py-2 border-b border-white/30">
               <img
-                src="https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-3d-jade-lake-tay-thang-long-2.webp"
+                src="/images/Banner-JLR-HomePage.webp"
                 alt="Post 1"
                 className="w-12 h-12 object-cover rounded"
               />
@@ -75,7 +105,7 @@ export default function Footer() {
             {/* Bài viết 2 */}
             <li className="flex items-center space-x-3 py-2 border-b border-white/30">
               <img
-                src="https://jadelaketaythanglong.com/wp-content/uploads/2024/08/phoi-canh-3d-jade-lake-tay-thang-long-2.webp"
+                src="/images/Banner-JLR-Pr-1.webp"
                 alt="Post 2"
                 className="w-12 h-12 object-cover rounded"
               />
@@ -96,34 +126,48 @@ export default function Footer() {
         </div>
 
         {/* Form đăng ký */}
-        <div>
-          <h3 className="text-lg font-semibold">ĐĂNG KÝ BÁO GIÁ</h3>
-          <div className="w-10 h-1 bg-[#ffffff4d] mt-1 mb-3"></div>
-          <form className="mt-2 grid grid-cols-2 gap-2">
-            <input
-              type="text"
-              placeholder="Họ và tên *"
-              className="p-2 bg-white text-black rounded"
-            />
-            <input
-              type="text"
-              placeholder="Số điện thoại *"
-              className="p-2 bg-white text-black rounded"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="p-2 bg-white text-black rounded col-span-2"
-            />
-            <textarea
-              placeholder="Ghi chú..."
-              className="p-2 bg-white text-black rounded col-span-2"
-            ></textarea>
-            <button className="bg-blue-600 hover:bg-blue-700 p-2 rounded col-span-2 text-center">
-              TẢI XUỐNG
-            </button>
-          </form>
-        </div>
+        <form className="mt-2 grid grid-cols-2 gap-2" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Họ và tên *"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="p-2 bg-white text-black rounded"
+          />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Số điện thoại *"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className="p-2 bg-white text-black rounded"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="p-2 bg-white text-black rounded col-span-2"
+          />
+          <textarea
+            name="note"
+            placeholder="Ghi chú..."
+            value={formData.note}
+            onChange={handleChange}
+            className="p-2 bg-white text-black rounded col-span-2"
+          ></textarea>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-600 hover:bg-blue-700 p-2 rounded col-span-2 text-center"
+          >
+            {loading ? 'Đang gửi...' : success ? 'Đã gửi ✅' : 'TƯ VẤN'}
+          </button>
+        </form>
       </div>
 
       {/* 🔥 Icon Zalo & Phone cố định */}
