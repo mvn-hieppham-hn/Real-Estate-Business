@@ -23,7 +23,7 @@ export async function sendQuoteRequest(formData: {
     to: process.env.EMAIL_RECEIVER,
     subject: 'Yêu cầu báo giá mới từ website BĐS',
     html: `
-      <h3>Thông tin khách hàng:</h3>
+      <h3 style="color:red;">Thông tin khách hàng:</h3>
       <p><strong>Họ và tên:</strong> ${name}</p>
       <p><strong>SĐT:</strong> ${phone}</p>
       <p><strong>Email:</strong> ${email || '(Không có)'}</p>
