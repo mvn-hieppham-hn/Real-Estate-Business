@@ -165,7 +165,7 @@ export default function Footer() {
             disabled={loading}
             className="bg-blue-600 hover:bg-blue-700 p-2 rounded col-span-2 text-center"
           >
-            {loading ? 'Đang gửi...' : success ? 'Đã gửi ✅' : 'TẢI XUỐNG'}
+            {loading ? 'Đang gửi...' : success ? 'Đã gửi ✅' : 'TƯ VẤN'}
           </button>
         </form>
       </div>
